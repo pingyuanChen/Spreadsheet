@@ -6,8 +6,11 @@ import {
   View,
   Image,
   TouchableHighlight,
+  TouchableOpacity,
   ListView
 } from 'react-native';
+import NavigationBar from 'react-native-navbar';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import listActions from '../actions/list';
 
@@ -91,9 +94,41 @@ class Home extends Component {
 
   }
 
+  _newAction() {
+
+  }
+
+  _renderNavBar() {
+    const navigator = this.props.navigator;
+    const title = '石墨文档';
+    const leftButton = (
+      <View>
+        <Text
+          onPress={() => {if (index > 0) {navigator.pop()}}}>
+          返回
+        </Text>
+      </View>
+    )
+    const rightButton = (
+      <View>
+        <TouchableOpacity onPress={this._newAction}>
+          <Icon name='plus' />
+        </TouchableOpacity>
+      </View>
+    )
+
+    return (
+      <NavigationBar
+        title={title}
+        leftButton={leftButton}
+        rightButton={rightButton} />
+    );
+  }
+
   render() {
     return (
       <View>
+        { this._renderNavBar() }
         <ListView
           dataSource={this.state.list}
           renderRow={this.renderRow}
