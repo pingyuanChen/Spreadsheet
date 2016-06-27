@@ -42,11 +42,11 @@ class Home extends Component {
   _renderRow(rowData) {
     let iconUrl;
     if (rowData.type === 0) {
-      iconUrl = require('../assets/images/doc.png');
+      iconUrl = require('../../assets/images/doc.png');
     } else if (rowData.type === 1) {
-      iconUrl = require('../assets/images/folder.png');
+      iconUrl = require('../../assets/images/folder.png');
     } else {
-      iconUrl = require('../assets/images/spreadsheet.png');
+      iconUrl = require('../../assets/images/spreadsheet.png');
     }
 
     return (

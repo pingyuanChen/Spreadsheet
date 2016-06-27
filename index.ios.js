@@ -3,6 +3,6 @@ import {
   AppRegistry
 } from 'react-native';
 
-import Boot from './app/boot';
+import Boot from './src/app/boot';
 
 AppRegistry.registerComponent('Spreadsheet', () => Boot);
