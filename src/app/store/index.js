@@ -9,6 +9,13 @@ const createStoreWithMiddleware = applyMiddleware(
     promiseMiddleware
   )(createStore);
 
-export default function configureStore() {
-  return createStoreWithMiddleware(rootReducer)
+let store = null;
+
+export function configureStore() {
+  store = createStoreWithMiddleware(rootReducer);
+  return store;
 };
+
+export function getStore() {
+  return store;
+}

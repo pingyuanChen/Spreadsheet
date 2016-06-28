@@ -3,7 +3,7 @@ import {
   View
 } from 'react-native';
 
-import AppNavigator from './navigator';
+import AppNavigator from './Navigator';
 
 class App extends Component {
   render() {

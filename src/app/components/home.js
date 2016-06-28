@@ -10,7 +10,7 @@ import {
   ListView
 } from 'react-native';
 import NavigationBar from 'react-native-navbar';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import listActions from '../actions/list';
 
@@ -86,7 +86,8 @@ class Home extends Component {
 
   _clickRow(rowData) {
     this.props.navigator.push({
-      name: 'spreadsheet'
+      name: 'spreadsheet',
+      guid: rowData.guid
     });
   }
 
@@ -95,15 +96,18 @@ class Home extends Component {
   }
 
   _newAction() {
-
+    console.log('_newAction pressed...')
   }
 
   _renderNavBar() {
     const navigator = this.props.navigator;
-    const title = '石墨文档';
+    const titleConfig = {
+      title: '石墨文档',
+      tintColor: '#ccc'
+    };
     const leftButton = (
       <View>
-        <Text
+        <Text style={styles.navBarBtn}
           onPress={() => {if (index > 0) {navigator.pop()}}}>
           返回
         </Text>
@@ -111,15 +115,16 @@ class Home extends Component {
     )
     const rightButton = (
       <View>
-        <TouchableOpacity onPress={this._newAction}>
-          <Icon name='plus' />
+        <TouchableOpacity onPress={this._newAction} >
+          <Icon name='md-add' style={[styles.navBarBtn, {fontSize: 20}]}/>
         </TouchableOpacity>
       </View>
     )
 
     return (
       <NavigationBar
-        title={title}
+        style={styles.navBar}
+        title={titleConfig}
         leftButton={leftButton}
         rightButton={rightButton} />
     );
@@ -139,6 +144,16 @@ class Home extends Component {
 };
 
 const styles = StyleSheet.create({
+  navBar: {
+    backgroundColor: '#41464b',
+    height: 30,
+    alignItems: 'center'
+  },
+  navBarBtn: {
+    color: '#ccc',
+    paddingLeft: 10,
+    paddingRight: 10
+  },
   itemIcon: {
     width: 35,
     height: 35

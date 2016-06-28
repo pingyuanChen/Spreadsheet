@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
 
 import listReducer from './list';
-// import msgReducer from './msg';
+import spreadsheetReducer from './spreadsheet';
 
 export default combineReducers({
-  list: listReducer
+  list: listReducer,
+  spreadsheet: spreadsheetReducer
 });
